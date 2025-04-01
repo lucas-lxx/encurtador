@@ -1,5 +1,7 @@
 const express = require('express');
 
+const encurtar_router = require('./routes/encurtar');
+
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -9,8 +11,10 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static('./public/'));
 
+app.use('/', encurtar_router);
+
 app.use('/', (req, res, next) => {
-  res.render('index');
+  res.redirect('/');
 });
 
 app.listen(process.env.PORT, process.env.HOST, res => {
