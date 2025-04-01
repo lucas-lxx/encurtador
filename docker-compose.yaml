@@ -21,7 +21,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - encurtadorPgData:/var/lib/postgresql/data
+      - encurtador_pgdata:/var/lib/postgresql/data
 volumes:
-  encurtadorPgData:
+  encurtador_pgdata:
     
