@@ -1,16 +1,11 @@
 const router = require('express').Router();
 
-router.get('/', (req, res, next) => {
-  res.render('index');
-});
+const encurtarController = require('../controllers/encurtar');
 
-router.post('/link', (req, res, next) => {
-  console.log(req.body);
-  res.redirect('/link/success');
-})
+router.get('/', encurtarController.getIndex);
 
-router.get('/link/success', (req, res, next) => {
-  res.send('success!');
-})
+router.post('/link', encurtarController.createShortLink);
+
+router.get('/link/success', encurtarController.createLinkSuccess);
 
 module.exports = router;
