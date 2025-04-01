@@ -6,7 +6,7 @@ router.get('/', (req, res, next) => {
 
 router.post('/link', (req, res, next) => {
   console.log(req.body);
-  res.redirect('/link-success');
+  res.redirect('/link/success');
 })
 
 router.get('/link/success', (req, res, next) => {
