@@ -1,0 +1,31 @@
+{
+  "name": "encurtador",
+  "version": "1.0.0",
+  "description": "encurtador de links",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucas-lxx/encurtador.git"
+  },
+  "author": "Lucas Almeida",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucas-lxx/encurtador/issues"
+  },
+  "homepage": "https://github.com/lucas-lxx/encurtador#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.9",
+    "sql-formatter": "^15.5.2"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "pg": "^8.14.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7"
+  }
+}
