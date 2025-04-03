@@ -1,6 +1,7 @@
 const express = require('express');
 
 const encurtar_router = require('./routes/encurtar');
+const sequelize = require('./database/database');
 
 const app = express();
 
@@ -17,6 +18,17 @@ app.use('/', (req, res, next) => {
   res.redirect('/');
 });
 
-app.listen(process.env.PORT, process.env.HOST, res => {
-  console.log(`app listening on port: ${process.env.PORT}`)
-});
+sequelize.sync({force: true})
+// sequelize.sync()
+.then(_ => {
+  console.log("======sequelize sync start================")
+  app.listen(process.env.PORT, process.env.HOST, res => {
+    console.log(`app listening on port: ${process.env.PORT}`)
+  });
+})
+.then(_ => {
+  console.log("======sequelize sync end==================")
+})
+.catch(err => {
+  console.log(err);
+})
