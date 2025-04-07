@@ -18,8 +18,8 @@ app.use('/', (req, res, next) => {
   res.redirect('/');
 });
 
-sequelize.sync({force: true})
-// sequelize.sync()
+// sequelize.sync({force: true})
+sequelize.sync()
 .then(_ => {
   console.log("======sequelize sync start================")
   app.listen(process.env.PORT, process.env.HOST, res => {

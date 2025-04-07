@@ -5,24 +5,19 @@ const sequelize = require('../database/database');
 const Link = sequelize.define(
   'links',
   {
-    id: {
-      type: Sequelize.UUID,
+    short_link: {
+      type: Sequelize.STRING,
       allowNull: false,
-      defaultValue: Sequelize.UUIDV1,
       unique: true,
       primaryKey: true
     },
     original_link: {
-      type: Sequelize.STRING,
-      allowNull: false
-    },
-    short_link: {
-      type: Sequelize.STRING,
+      type: Sequelize.TEXT,
       allowNull: false
     },
     last_click: {
       type: Sequelize.DATE,
-      allowNull: false
+      defaultValue: null
     },
     clicks: {
       type: Sequelize.INTEGER,
