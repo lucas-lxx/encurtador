@@ -1,6 +1,7 @@
-const path = require('path');
 const { nanoid } = require('nanoid');
 
+const { getShortLinkName } = require('../util/url');
+const { log } = require('../util/log');
 const Link = require('../models/link');
 
 exports.getIndex = (req, res, next) => {
@@ -29,6 +30,14 @@ exports.createShortLink = (req, res, next) => {
   .catch(err => {console.error(err); res.json({link: 'server error: function createShortLink()'})});
 };
 
-exports.createLinkSuccess = (req, res, next) => {
-  res.send({link: 'success'});
+exports.getShortLink = (req, res, next) => {
+  const shortLinkName = getShortLinkName(req.params.short_link_id);
+  Link.findByPk(shortLinkName)
+  .then(link => {
+    link.last_click = new Date();
+    link.clicks += 1;
+    link.save();
+    res.redirect(link.original_link);
+  })
+  .catch(err => console.error(err));
 }

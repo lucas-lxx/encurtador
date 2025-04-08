@@ -6,6 +6,6 @@ router.get('/', encurtarController.getIndex);
 
 router.post('/link', encurtarController.createShortLink);
 
-router.get('/link/success', encurtarController.createLinkSuccess);
+router.get('/l/:short_link_id', encurtarController.getShortLink);
 
 module.exports = router;
