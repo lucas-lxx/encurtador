@@ -10,12 +10,10 @@ exports.getIndex = (req, res, next) => {
 
 exports.createShortLink = (req, res, next) => {
   const originalLink = req.body.originalLink;
-  Link.findOne({where: {original_link: originalLink}})
+  Link.findAll({where: {original_link: originalLink}})
   .then(data => {
-    const randomPath = nanoid(7);
-    const shortLinkName = path.join(process.env.URL, randomPath);
-    console.log("originalLink: ", originalLink);
-    console.log("shortLink: ", shortLinkName);
+    const shortLinkId = nanoid(7);
+    const shortLinkName = getShortLinkName(shortLinkId);
     return Link.create({
       original_link: originalLink,
       short_link: shortLinkName,
