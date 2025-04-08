@@ -1,7 +1,6 @@
 const { nanoid } = require('nanoid');
 
 const { getShortLinkName } = require('../util/url');
-const { log } = require('../util/log');
 const Link = require('../models/link');
 
 exports.getIndex = (req, res, next) => {
