@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 
 const encurtar_router = require('./routes/encurtar');
