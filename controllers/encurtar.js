@@ -3,11 +3,11 @@ const { nanoid } = require('nanoid');
 const { getShortLinkName } = require('../util/url');
 const Link = require('../models/link');
 
-exports.getIndex = (req, res, next) => {
+exports.getIndex = async (req, res, next) => {
   res.render('index');
 };
 
-exports.createShortLink = (req, res, next) => {
+exports.createShortLink = async (req, res, next) => {
   const originalLink = req.body.originalLink;
   Link.findAll({where: {original_link: originalLink}})
   .then(data => {
@@ -27,7 +27,7 @@ exports.createShortLink = (req, res, next) => {
   .catch(err => {console.error(err); res.json({link: 'server error: function createShortLink()'})});
 };
 
-exports.getShortLink = (req, res, next) => {
+exports.getShortLink = async (req, res, next) => {
   const shortLinkName = getShortLinkName(req.params.short_link_id);
   Link.findByPk(shortLinkName)
   .then(link => {
