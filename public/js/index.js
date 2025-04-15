@@ -10,30 +10,28 @@ const createElement = async (element_name, options = {classes: [], id: null, val
   return element;
 }
 
-const generateShortLinkContainer = async (data) => {
-  const anchorTagClass = 'short-link__anchor-container';
-  let form = document.getElementById('link__form');
-  let div = document.getElementById('link__short-link-container')
-  if (!div) {
-    div = document.createElement('div');
-    div.classList.add = 'link__short-link-container';
-    let a = document.createElement('a');
-    a.id = 'link__short-link';
-    div.appendChild(a);
-    form.append(div);
-  }
-  let a = document.getElementById('link__short-link');
-  a.innerText = data.link;
-  a.href = data.link;
-  a.classList.add(anchorTagClass);
-  a.target = '_blank';
+const generateShortLinkContainer = async () => {
+  let link_block = document.getElementById('link');
+  let short_link_container = await createElement('div', {classes: ['link__short-link-container']});
+  let short_link = await createElement('a', {classes: ['link__short-link'], id: 'link__short-link'});
+  short_link_container.appendChild(short_link);
+  link_block.append(short_link_container);
+}
+
+const updateShortLink = async (data) => {
+  let short_link_container = document.getElementById('link__short-link-container')
+  if (!short_link_container) { short_link_container = await generateShortLinkContainer(); }
+  let short_link = document.getElementById('link__short-link');
+  short_link.innerText = data.link;
+  short_link.href = data.link;
+  short_link.target = '_blank';
 }
 
 const returnShortLink = async (event) => {
   event.preventDefault();
-  const data = { originalLink: document.getElementById('originalLink').value};
+  const data = { original_link: document.getElementById('original_link').value};
   const axios_data = await axios.post('/link', data, {'Content-Type': 'application/json; charset=UTF-8'});
-  generateShortLinkContainer(axios_data.data);
+  updateShortLink(axios_data.data);
 } 
 
 originalLinkElement.addEventListener('submit', returnShortLink);

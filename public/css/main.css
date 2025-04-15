@@ -14,14 +14,18 @@ body {
   height: 60vh;
 }
 
-.short-link__anchor-container {
+.link__short-link {
   text-decoration: none;
   color: black;
   transition: all 0.25s;
 }
 
-.short-link__anchor-container:hover {
+.link__short-link:hover {
   text-decoration: none;
   border: solid 1px gray;
   border-radius: 2px;
+}
+
+.link__form-container, .link__short-link-container {
+  margin-bottom: 0.5vh;
 }

@@ -8,7 +8,7 @@ exports.getIndex = async (req, res, next) => {
 };
 
 exports.createShortLink = async (req, res, next) => {
-  const originalLink = req.body.originalLink;
+  const originalLink = req.body.original_link;
   Link.findAll({where: {original_link: originalLink}})
   .then(data => {
     const shortLinkId = nanoid(7);
