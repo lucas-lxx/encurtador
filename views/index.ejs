@@ -7,13 +7,15 @@
   <title>Encurtador</title>
 </head>
 <body>
-  <div>
-    <p>Link para encurtar</p>
-    <form action="/link" method="POST" name="originalLinkForm" id="originalLinkForm">
-      <input type="text" name="originalLink" id="originalLink">
-      <button type="submit">encurtar</button>
-    </form>
-  </div>
+  <main class="link">
+    <div class="link__form-container">
+      <label>Link para encurtar</label>
+      <form action="/link" method="POST" class="link__form" id="link__form">
+        <input type="text" name="originalLink" id="originalLink">
+        <button type="submit">encurtar</button>
+      </form>
+    </div>
+  </main>
 </body>
 <script type="module" src="/js/index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
