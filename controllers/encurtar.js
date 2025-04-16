@@ -31,8 +31,8 @@ exports.createShortLink = async (req, res, next, tryy = null) => {
 
 exports.getShortLink = async (req, res, next) => {
   const shortLinkName = getShortLinkName(req.params.short_link_id);
-  const link = await Link.findByPk(shortLinkName);
   try {
+    const link = await Link.findByPk(shortLinkName);
     link.last_click = new Date();
     link.clicks += 1;
     link.save();
