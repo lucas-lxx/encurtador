@@ -1,5 +1,3 @@
-// import axios from "axios";
-
 const originalLinkElement = document.getElementById('link__form');
 
 const createElement = async (element_name, options = {classes: [], id: null, value: null}) => {
