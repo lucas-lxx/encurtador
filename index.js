@@ -4,6 +4,9 @@ const express = require('express');
 const encurtar_router = require('./routes/encurtar');
 const sequelize = require('./database/database');
 
+const User = require('./models/user');
+const Link = require('./models/link');
+
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -18,6 +21,9 @@ app.use('/', encurtar_router);
 app.use('/', (req, res, next) => {
   res.redirect('/');
 });
+
+User.hasMany(Link);
+Link.belongsTo(User);
 
 // sequelize.sync({force: true})
 sequelize.sync()
