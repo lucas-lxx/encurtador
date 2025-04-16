@@ -17,13 +17,16 @@ body {
 .link__short-link {
   text-decoration: none;
   color: black;
+  padding: 2px;
   transition: all 0.25s;
 }
 
 .link__short-link:hover {
   text-decoration: none;
-  border: solid 1px gray;
-  border-radius: 2px;
+  background-color: black;
+  color: white;
+  padding: 2px;
+  border-radius: 3px;
 }
 
 .link__form-container, .link__short-link-container {
