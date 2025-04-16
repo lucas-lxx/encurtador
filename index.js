@@ -2,8 +2,9 @@ require('dotenv').config();
 const express = require('express');
 
 const encurtar_router = require('./routes/encurtar');
-const sequelize = require('./database/database');
+const account_router = require('./routes/account');
 
+const sequelize = require('./database/database');
 const User = require('./models/user');
 const Link = require('./models/link');
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static('./public/'));
 
+app.use ('/account', account_router);
 app.use('/', encurtar_router);
 
 app.use('/', (req, res, next) => {
