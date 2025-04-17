@@ -18,6 +18,7 @@ exports.createUser = async (req, res, next) => {
       console.log(newUser);
       res.status(201).json({success: 'user created successfully!'});
     } catch (e) {
+      log('create user error', e);
     }
   }
   res.status(500).json({error: 'user not created!'});
@@ -35,6 +36,6 @@ exports.getLogin = async (req, res, next) => {
 
     res.status(200).json({ token });
   } catch (e) {
-    console.log(e);
+    log('get login error', e);
   }
 }
