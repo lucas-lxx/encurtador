@@ -1,6 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 
+const auth_middleware = require('./middleware/auth');
+
 const encurtar_router = require('./routes/encurtar');
 const account_router = require('./routes/account');
 
@@ -16,6 +18,8 @@ app.set('views', 'views');
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static('./public/'));
+
+app.use(auth_middleware);
 
 app.use ('/account', account_router);
 app.use('/', encurtar_router);
