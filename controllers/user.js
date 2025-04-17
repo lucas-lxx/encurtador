@@ -9,15 +9,15 @@ exports.createUser = async (req, res, next) => {
   const { name, email, password } = req.body;
   for (let i = 0; i < retries; i++) {
     try {
-      const hashed_password = await bcrypt.hash(password, 10);
-      log("hashed_password", () => console.log(hashed_password));
-      const new_user = await User.create({
+      const hashedPassword = await bcrypt.hash(password, 10);
+      log("hashedPassword", () => console.log(hashed_password));
+      const newUser = await User.create({
         name: name,
         email: email,
-        password: hashed_password
+        password: hashedPassword
       });
-      console.log(new_user);
-      res.json({success: 'user created successfully!'});
+      console.log(newUser);
+      res.status(201).json({success: 'user created successfully!'});
     } catch (e) {
       log('error attempt', () => console.log(e));
     }
