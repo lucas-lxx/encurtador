@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/main.css">
-  <title>Encurtador</title>
+<%- include('./include/head') %>
 </head>
 <body>
-  <nav>
-    <div id="nav-start-container">Encurtador</div>
-    <div id="nav-center-container"></div>
-    <div id="nav-end-container">
-      <div class="button button-signup">sign up</div>
-      <div class="button">login</div>
-    </div>
-  </nav>
+  <%- include('./include/nav') %>
   <main class="link" id="link">
     <div class="link__form-container">
       <div><label>Link para encurtar</label></div>
@@ -27,6 +14,4 @@
     </div>
   </main>
 </body>
-<script type="module" src="/js/index.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</html>
+<%- include('./include/tail') %>
