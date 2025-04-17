@@ -1,5 +1,5 @@
-exports.log = (name, foo) => {
+exports.log = (name, toPrint) => {
   console.log(`=============start ${name}========================`);
-  foo();
+  console.log(toPrint);
   console.log(`===============end ${name}========================`);
 }
