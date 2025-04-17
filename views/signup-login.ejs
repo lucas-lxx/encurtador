@@ -1,0 +1,36 @@
+<%- include('./include/head') %>
+</head>
+<body>
+  <%- include('./include/nav') %>
+  <main class="link" id="link">
+    <div class="link__form-container">
+      <div>
+        <% if (path === '/account/signup') { %>
+        <form action="/account/signup" method="POST" class="link__form" id="link__form">
+        <% } %>
+        <% if (path === '/account/login') { %>
+        <form action="/account/login" method="POST" class="link__form" id="link__form">
+        <% } %>
+          <% if (path === '/account/signup') { %>
+            <div class="link__form-field">
+              <label for="name">Name</label>
+              <input type="text" name="name" id="name">
+            </div>
+          <% } %>
+          <div class="link__form-field">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email">
+          </div>
+          <div class="link__form-field">
+            <label for="password">Password</label>
+            <input type="text" name="password" id="password">
+          </div>
+          <div class="link__form-field">
+            <button type="submit">Sign Up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</body>
+<%- include('./include/tail') %>
