@@ -16,8 +16,6 @@ nav {
   justify-content: center;
   width: 100%;
   height: 5vh;
-  /* border-bottom: 1px solid black; */
-  /* border-top: 1px solid black; */
   background-color: black;
 }
 
@@ -31,6 +29,12 @@ main {
   align-items: center;
   width: 100%;
   height: 50vh;
+}
+
+
+
+.link__form-container {
+  width: 45vw;
 }
 
 .link__short-link {
@@ -48,18 +52,47 @@ main {
   border-radius: 3px;
 }
 
-.link__form-container, .link__short-link-container {
-  margin-bottom: 0.5vh;
-}
-
 .link__form-field {
   width: 100%;
-  margin: 1vh;
+  margin: 1vh 0;
 }
 
 .link__form-field input {
   width: 100%;
 }
+
+
+/* login */
+
+.login__form-container {
+  width: 25vw;
+}
+
+.login__short-link {
+  text-decoration: none;
+  color: black;
+  padding: 2px;
+  transition: all 0.25s;
+}
+
+.login__short-link:hover {
+  text-decoration: none;
+  background-color: black;
+  color: white;
+  padding: 2px;
+  border-radius: 3px;
+}
+
+.login__form-field {
+  width: 100%;
+  margin: 1vh 0;
+}
+
+.login__form-field input {
+  width: 100%;
+}
+
+/* login */
 
 .button {
   border: 1px solid black;
