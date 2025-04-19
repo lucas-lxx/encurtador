@@ -4,11 +4,15 @@
   <%- include('./include/nav') %>
   <main class="link" id="link">
     <div class="link__form-container">
-      <div><label>Link para encurtar</label></div>
       <div>
         <form action="/link" method="POST" class="link__form" id="link__form">
-          <input type="text" name="original_link" id="original_link">
-          <button type="submit">encurtar</button>
+          <div class="link__form-field">
+            <label>Link para encurtar</label>
+            <input type="text" name="original_link" id="original_link">
+          </div>
+          <div class="link__form-field">
+            <button type="submit">encurtar</button>
+          </div>
         </form>
       </div>
     </div>
