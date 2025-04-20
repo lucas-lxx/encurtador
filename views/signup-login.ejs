@@ -5,7 +5,7 @@
   <main class="link" id="link">
     <div class="login__form-container">
       <% if (path === '/account/signup') { %>
-      <form action="/account/signup" method="POST" class="login__form" id="login__form">
+      <form action="/account/signup" method="POST" class="login__form" id="signup__form">
       <% } %>
       <% if (path === '/account/login') { %>
       <form action="/account/login" method="POST" class="login__form" id="login__form">
@@ -22,20 +22,26 @@
         </div>
         <div class="login__form-field">
           <label for="password">Password</label>
-          <input type="text" name="password" id="password">
+          <input type="password" name="password" id="password">
         </div>
         <% if (path === '/account/signup') { %>
           <div class="login__form-field">
-            <button type="submit">Sign Up</button>
+            <button id="signup" type="submit">Sign Up</button>
           </div>
         <% } %>
         <% if (path === '/account/login') { %>
           <div class="login__form-field">
-            <button type="submit">Login</button>
+            <button id="login" type="submit">Login</button>
           </div>
         <% } %>
       </form>
     </div>
   </main>
 </body>
+<% if (path === '/account/signup') { %>
+  <script type="module" src="/js/signup.js"></script>
+<% } %>
+<% if (path === '/account/login') { %>
+  <script type="module" src="/js/login.js"></script>
+<% } %>
 <%- include('./include/tail') %>
