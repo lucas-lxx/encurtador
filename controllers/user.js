@@ -15,10 +15,16 @@ exports.createUser = async (req, res, next) => {
         email: email,
         password: hashedPassword
       });
-      console.log(newUser);
-      res.status(201).json({success: 'user created successfully!'});
+      log('new user', newUser);
+      return res.status(201).json({success: 'user created successfully!'});
     } catch (e) {
       log('create user error', e);
+      if (e.name === 'SequelizeUniqueConstraintError' && e.errors[0].path === 'email') {
+        return res.status(409).json({
+          error_message: 'email already in use',
+          error: ['email']
+        });
+      }
     }
   }
   res.status(500).json({error: 'user not created!'});
