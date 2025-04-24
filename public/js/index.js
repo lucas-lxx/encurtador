@@ -20,10 +20,14 @@ const updateShortLink = async (link) => {
 }
 
 const returnShortLink = async (event) => {
-  event.preventDefault();
-  const data = { original_link: document.getElementById('original_link').value};
-  const axios_data = await axios.post('/link', data, {'Content-Type': 'application/json; charset=UTF-8'});
-  updateShortLink(axios_data.data.link);
+  try {
+    event.preventDefault();
+    const data = { original_link: document.getElementById('original_link').value};
+    const axios_data = await axios.post('/link', data, {'Content-Type': 'application/json; charset=UTF-8'});
+    updateShortLink(axios_data.data.link);
+  } catch (e) {
+    console.log(e)
+  }
 } 
 
 originalLinkElement.addEventListener('submit', returnShortLink);
