@@ -1,8 +1,10 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { default: emailValidator } = require('node-email-verifier');
 
 const User = require('../models/user');
 const { log } = require('../util/log');
+const { EmailValidationError } = require('../util/error/email');
 
 exports.createUser = async (req, res, next) => {
   let retries = 3;
@@ -10,6 +12,8 @@ exports.createUser = async (req, res, next) => {
   for (let i = 0; i < retries; i++) {
     try {
       const hashedPassword = await bcrypt.hash(password, 10);
+      const isEmailValid = await emailValidator(email, {checkMx: true, timeout: "10s"});
+      if (!isEmailValid) throw new EmailValidationError('email is not valid');
       const newUser = await User.create({
         name: name,
         email: email,
@@ -21,9 +25,16 @@ exports.createUser = async (req, res, next) => {
       log('create user error', e);
       if (e.name === 'SequelizeUniqueConstraintError' && e.errors[0].path === 'email') {
         return res.status(409).json({
-          error_message: 'email already in use',
+          error_message: 'email already taken',
           error: ['email']
         });
+      }
+      if (e.name === 'EmailValidationError') {
+        console.log(e.message);
+        return res.status(400).json({
+          error_message: e.message,
+          error: ['email']
+        })
       }
     }
   }
