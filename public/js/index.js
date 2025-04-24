@@ -1,17 +1,11 @@
-const originalLinkElement = document.getElementById('link__form');
+import { createElement } from "./elements.js";
 
-const createElement = async (element_name, options = {classes: [], id: null, value: null}) => {
-  let element = document.createElement(element_name);
-  options.classes.forEach(c => {element.classList.add(c)})
-  if (options.id) { element.id = options.id; }
-  if (options.value) { element.value = options.value }
-  return element;
-}
+const originalLinkElement = document.getElementById('link__form');
 
 const generateShortLinkContainer = async () => {
   let link_block = document.getElementById('link');
-  let short_link_container = await createElement('div', {classes: ['link__short-link-container']});
-  let short_link = await createElement('a', {classes: ['link__short-link'], id: 'link__short-link'});
+  let short_link_container = createElement('div', {classes: ['link__short-link-container']});
+  let short_link = createElement('a', {classes: ['link__short-link'], id: 'link__short-link'});
   short_link_container.appendChild(short_link);
   link_block.append(short_link_container);
 }
