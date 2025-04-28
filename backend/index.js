@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 
 const auth_middleware = require('./middleware/auth');
 
@@ -12,6 +13,7 @@ const Link = require('./models/link');
 
 const app = express();
 
+app.use(cors());
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
