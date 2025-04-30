@@ -1,5 +1,7 @@
 FROM node:23
 
+RUN corepack enable
+
 WORKDIR /app
 
 # COPY package*.json ./
@@ -13,8 +15,8 @@ RUN addgroup --gid ${GROUP_ID} user
 RUN useradd -u ${USER_ID} -g ${GROUP_ID} -m -s /bin/bash -p "" user
 USER user
 
-# RUN npm install
+# RUN yarn install
 
 COPY . .
 
-ENTRYPOINT ["npm"]
+ENTRYPOINT ["yarn"]
