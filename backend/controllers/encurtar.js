@@ -22,7 +22,7 @@ exports.createShortLink = async (req, res, next, tryy = null) => {
     res.json({link: link.short_link});
   } catch (e) {
     console.error(e);
-    if (tryy <= 0) res.status(500).json({error: 'Internal server error'});
+    if (tryy <= 0) return res.status(500).json({error: 'Internal server error'});
     if (e.name === 'SequelizeUniqueConstraintError') {
       this.createShortLink(req, res, next, (tryy-1));
     }
